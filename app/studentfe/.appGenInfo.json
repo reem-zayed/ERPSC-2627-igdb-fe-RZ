@@ -1,0 +1,32 @@
+{
+  "generationParameters": {
+    "generationDate": "Tue Nov 10 2026 01:18:09 GMT+0100 (Central European Standard Time)",
+    "generatorPlatform": "Visual Studio Code",
+    "serviceType": "Local CAP",
+    "metadataFilename": "",
+    "serviceUrl": "http://localhost:4004/odata/v4/game/",
+    "appName": "studentfe",
+    "appTitle": "Studenten",
+    "appDescription": "Studenten en hun favoriete games",
+    "appNamespace": "sap.fe.app",
+    "ui5Theme": "sap_horizon",
+    "ui5Version": "1.154.0",
+    "enableEslint": true,
+    "enableTypeScript": false,
+    "showMockDataInfo": false,
+    "generatorVersion": "1.22.0",
+    "template": "List Report Page V4",
+    "generatorName": "SAP Fiori Application Generator",
+    "entityRelatedConfig": [
+      {
+        "type": "Main Entity",
+        "value": "Student"
+      },
+      {
+        "type": "Navigation Entity",
+        "value": "to_favos"
+      }
+    ],
+    "launchText": "To launch the generated app, start your CAP project:  and navigate to the following location in your browser:\n\nhttp://localhost:4004/studentfe/webapp/index.html"
+  }
+}

@@ -7,3 +7,16 @@ annotate service.FavoriteGame with @cds.search : {
     to_game.Genre,
     to_game.Platform,
 };
+annotate service with @Capabilities.FilterFunctions : ['tolower'];
+annotate service.Student with @Capabilities.FilterRestrictions : {
+    FilterExpressionRestrictions : [
+        {
+            Property : First_name,
+            AllowedExpressions : 'SearchExpression',
+        },
+        {
+            Property : Last_name,
+            AllowedExpressions : 'SearchExpression',
+        },
+    ],
+};

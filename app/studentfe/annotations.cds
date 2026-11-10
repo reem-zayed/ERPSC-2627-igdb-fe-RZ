@@ -127,3 +127,14 @@ annotate service.FavoriteGame with {
         },
     );
 };
+annotate service.Student with @(
+    UI.SelectionFields : [
+        First_name,
+        Last_name,
+    ],
+);
+
+annotate service.Student with {
+    First_name @title : 'Voornaam';
+    Last_name  @title : 'Achternaam';
+};

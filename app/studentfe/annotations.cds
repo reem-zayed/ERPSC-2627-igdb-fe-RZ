@@ -95,6 +95,8 @@ annotate service.Game with {
     Platform     @title : 'Platform'     @Common.FieldControl : #ReadOnly;
     Release_date @title : 'Releasedatum' @Common.FieldControl : #ReadOnly;
     Cover_url    @title : 'Cover'        @Common.FieldControl : #ReadOnly  @UI.IsImageURL;
+    Publisher    @title : 'Uitgever'     @Common.FieldControl : #ReadOnly;
+    Description  @title : 'Beschrijving' @Common.FieldControl : #ReadOnly  @UI.MultiLineText;
 };
 
 annotate service.FavoriteGame with {
@@ -127,6 +129,7 @@ annotate service.FavoriteGame with {
         },
     );
 };
+
 annotate service.Student with @(
     UI.SelectionFields : [
         First_name,
@@ -137,4 +140,69 @@ annotate service.Student with @(
 annotate service.Student with {
     First_name @title : 'Voornaam';
     Last_name  @title : 'Achternaam';
+};
+
+annotate service.FavoriteGame with @(
+    UI.HeaderInfo : {
+        TypeName : 'Favoriete game',
+        TypeNamePlural : 'Favoriete games',
+        Title : {
+            $Type : 'UI.DataField',
+            Value : to_game.Name,
+        },
+        Description : {
+            $Type : 'UI.DataField',
+            Value : to_game.Genre,
+        },
+        ImageUrl : to_game.Cover_url,
+    },
+    UI.FieldGroup #Details : {
+        $Type : 'UI.FieldGroupType',
+        Data : [
+            {
+                $Type : 'UI.DataField',
+                Value : to_game.Genre,
+            },
+            {
+                $Type : 'UI.DataField',
+                Value : to_game.Platform,
+            },
+            {
+                $Type : 'UI.DataField',
+                Value : to_game.Publisher,
+            },
+            {
+                $Type : 'UI.DataField',
+                Value : to_game.Release_date,
+            },
+        ],
+    },
+    UI.FieldGroup #Beschrijving : {
+        $Type : 'UI.FieldGroupType',
+        Data : [
+            {
+                $Type : 'UI.DataField',
+                Value : to_game.Description,
+            },
+        ],
+    },
+    UI.Facets : [
+        {
+            $Type : 'UI.ReferenceFacet',
+            ID : 'Details',
+            Label : 'Details',
+            Target : '@UI.FieldGroup#Details',
+        },
+        {
+            $Type : 'UI.ReferenceFacet',
+            ID : 'Beschrijving',
+            Label : 'Beschrijving',
+            Target : '@UI.FieldGroup#Beschrijving',
+        },
+    ],
+);
+
+annotate service.Student with {
+    First_name @mandatory;
+    Last_name  @mandatory;
 };

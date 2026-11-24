@@ -206,3 +206,17 @@ annotate service.Student with {
     First_name @mandatory;
     Last_name  @mandatory;
 };
+
+annotate service.Student with @(
+    UI.PresentationVariant : {
+        SortOrder : [
+            {
+                Property : Last_name,
+                Descending : false,
+            },
+        ],
+        Visualizations : [
+            '@UI.LineItem',
+        ],
+    },
+);
